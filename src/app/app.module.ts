@@ -12,13 +12,15 @@ import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
  
 
 @NgModule({
   declarations: [
     AppComponent,
     AppLogoComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

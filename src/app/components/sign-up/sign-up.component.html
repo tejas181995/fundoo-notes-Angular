@@ -1,0 +1,106 @@
+<div class="form-container" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="image-content">
+        <img src="../../../assets/fundoo.png" alt="logo" class="logo"/>
+
+        <img src="../../../assets/bg.png" alt="logo"/>
+
+    </div>
+    <div>
+      <form action="" class="form-content" [formGroup]="form">
+        
+        <div>
+          <div class="head">
+            <h2>Create Your Fundoo Account</h2>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayoutGap="15px"
+          >
+            <div>
+              <mat-form-field appearance="outline" class="element">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+  
+            <div>
+              <mat-form-field appearance="outline" class="element">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="email">
+            <mat-form-field appearance="outline" class="element">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Enter email" />
+              <mat-error></mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayoutGap="15px"
+          >
+            <div class="password">
+              <mat-form-field
+                appearance="outline"
+                formControlName="password"
+                class="element"
+              >
+                <mat-label>Password</mat-label>
+                <input
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                  placeholder="Enter password"
+                />
+  
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+                <mat-error>Error</mat-error>
+                <mat-hint>Password 8 characters</mat-hint>
+              </mat-form-field>
+            </div>
+  
+            <div class="password">
+              <mat-form-field appearance="outline" class="element">
+                <mat-label>Confirm</mat-label>
+                <input matInput placeholder="" />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div
+            class="lastelement"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayoutGap="15px"
+          >
+            <div>
+              <a href="" class="line">Sign in instead</a>
+            </div>
+            <div class="button">
+              <button mat-flat-button color="next">Next</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+   
+  </div>
+  
