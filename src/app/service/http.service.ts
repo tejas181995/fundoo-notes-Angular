@@ -14,4 +14,5 @@ export class HttpService {
   Post(url: any, data: any){
     return this.httpClient.post(this.baseUrl + url, data);
   }
+ 
 }

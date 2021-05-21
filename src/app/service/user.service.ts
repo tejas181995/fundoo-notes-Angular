@@ -11,4 +11,7 @@ export class UserService {
   registerService(data: any){
     return this.http.Post('user/userSignUp', data);
   }
+  loginService(data: any){
+    return this.http.Post('user/login', data)
+  }
 }

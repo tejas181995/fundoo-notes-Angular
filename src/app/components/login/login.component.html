@@ -1,5 +1,5 @@
 <div class="main-container">
-  <form action="" class="form-container">
+  <form action="" class="form-container" [formGroup]="form" (ngSubmit)="submit()" >
     <div>
       <img src="../../../assets/fundoo.png" alt="logo" class="logo" >
       <div fxLayout="column" fxLayoutAlign="space-around center">
@@ -13,7 +13,7 @@
       <div class="email" fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
-          <input matInput >
+          <input matInput  formControlName="email">
         </mat-form-field>
       </div>
 
@@ -24,6 +24,7 @@
             matInput
             [type]="hide ? 'password' : 'text'"
             placeholder="Enter password"
+            formControlName="password"
           />
           <button
             mat-icon-button
@@ -45,7 +46,7 @@
       <br />
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <a href="/signup" class="light-blue">Create Account</a>
-        <button mat-flat-button color="next">Log In</button>
+        <button mat-flat-button color="next" type="submit">Log In</button>
       </div>
     </div>
   </form>
