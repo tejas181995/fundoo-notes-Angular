@@ -6,7 +6,7 @@
 
     </div>
     <div>
-      <form action="" class="form-content" [formGroup]="form">
+      <form action="" class="form-content" [formGroup]="form" (ngSubmit)="submit()">
         
         <div>
           <div class="head">
@@ -20,24 +20,25 @@
             <div>
               <mat-form-field appearance="outline" class="element">
                 <mat-label>First Name</mat-label>
-                <input matInput placeholder="First Name" />
-                <mat-error></mat-error>
+                <input matInput placeholder="First Name" formControlName="fname" required/>
+                <mat-error *ngif="form.hasError('fname','required')"> First Name Required</mat-error>
+                <mat-error *ngif="form.hasError('fname','minlength')"> First Name should be more than 3 character</mat-error>
               </mat-form-field>
             </div>
-  
+
             <div>
               <mat-form-field appearance="outline" class="element">
                 <mat-label>Last Name</mat-label>
-                <input matInput placeholder="Last Name" />
-                <mat-error></mat-error>
+                <input matInput placeholder="Last Name" formControlName="lname" required />
+                <mat-error *ngif="form.hasError('lname','required')">Last name required</mat-error>
               </mat-form-field>
             </div>
           </div>
           <div class="email">
             <mat-form-field appearance="outline" class="element">
               <mat-label>Email</mat-label>
-              <input matInput placeholder="Enter email" />
-              <mat-error></mat-error>
+              <input matInput placeholder="Enter email" formControlName="email" required/>
+              <mat-error>Email Required</mat-error>
             </mat-form-field>
           </div>
   
@@ -57,6 +58,7 @@
                   matInput
                   [type]="hide ? 'password' : 'text'"
                   placeholder="Enter password"
+                  formControlName="Password"
                 />
   
                 <button
@@ -78,7 +80,7 @@
             <div class="password">
               <mat-form-field appearance="outline" class="element">
                 <mat-label>Confirm</mat-label>
-                <input matInput placeholder="" />
+                <input matInput placeholder="" formControlName="password" />
                 <mat-error></mat-error>
               </mat-form-field>
             </div>
@@ -92,15 +94,14 @@
             fxLayoutGap="15px"
           >
             <div>
-              <a href="" class="line">Sign in instead</a>
+              <a href="/login" class="line">Log in instead</a>
             </div>
             <div class="button">
-              <button mat-flat-button color="next">Next</button>
+              <button mat-flat-button color="next">Sign Up</button>
             </div>
           </div>
         </div>
       </form>
     </div>
-   
   </div>
   
