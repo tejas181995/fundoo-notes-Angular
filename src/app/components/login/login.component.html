@@ -13,7 +13,7 @@
       <div class="email" fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
-          <input matInput  formControlName="email">
+          <input matInput (focus)="gone()" formControlName="email">
         </mat-form-field>
       </div>
 
@@ -25,6 +25,7 @@
             [type]="hide ? 'password' : 'text'"
             placeholder="Enter password"
             formControlName="password"
+            (focus)="gone()"
           />
           <button
             mat-icon-button
@@ -37,7 +38,7 @@
           </button>
         </mat-form-field>
       </div>
-
+        <p [style.color]="'red'" [style.visibility]=styleDisp >Invalid username or password</p>
       <div>
         <p class="text-content">Not your computer?</p>
         <a href="" class="light-blue">Learn more</a>

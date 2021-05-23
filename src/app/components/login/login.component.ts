@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { UserService } from 'src/app/service/user.service';
 export class LoginComponent implements OnInit {
   hide = true;
   form: FormGroup;
-
+  styleDisp = "hidden"
+  
   constructor(private formBuilder: FormBuilder, private userService: UserService, 
     private router: Router){
       this.form = this.formBuilder.group({
@@ -38,14 +40,17 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard'])
       }, (error) => {
         console.log(error)
+        //alert("login failed")
+        this.styleDisp="visible"
       
       })
     }
   }
   
   ngOnInit(): void {
-    
+  
   }
-
- 
+  gone(){
+    this.styleDisp="hidden"
+  }
 }
