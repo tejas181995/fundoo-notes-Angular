@@ -58,7 +58,7 @@
                   matInput
                   [type]="hide ? 'password' : 'text'"
                   placeholder="Enter password"
-                  formControlName="Password"
+                  formControlName="password"
                 />
   
                 <button
@@ -80,24 +80,27 @@
             <div class="password">
               <mat-form-field appearance="outline" class="element">
                 <mat-label>Confirm</mat-label>
-                <input matInput placeholder=""  type="password" formControlName="password" />
+                <input matInput placeholder=""  type="password" formControlName="confirmPassword" />
                 <mat-error></mat-error>
               </mat-form-field>
             </div>
           </div>
           <br />
+          <p [style.color]="'red'" [style.visibility]=styleDisp >Password does not match </p>
           <br />
+          
           <div
             class="lastelement"
             fxLayout="row"
             fxLayoutAlign="space-between center"
             fxLayoutGap="15px"
           >
+         
             <div>
               <a href="/login" class="line">Log in instead</a>
             </div>
             <div class="button">
-              <button mat-flat-button color="next">Sign Up</button>
+              <button mat-flat-button color="next" [disabled]="isDisable">Sign Up</button>
             </div>
           </div>
         </div>
