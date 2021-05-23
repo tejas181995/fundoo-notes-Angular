@@ -15,6 +15,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+
+
  
 
 @NgModule({
@@ -37,7 +44,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     FormsModule,
    // HttpClient
-   HttpClientModule
+   HttpClientModule,
+   MatSidenavModule,
+   MatToolbarModule,
+   MatListModule,
+   MatTooltipModule
+   
     
   ],
   providers: [],
