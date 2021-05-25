@@ -1,0 +1,55 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  style="margin-top: 15px"
+  #createCard
+>
+  <mat-card
+    class="mat-elevation-z5 outline take-note-card"
+    *ngIf="!clicked"
+    (click)="clicked = !clicked"
+  >
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        <p class="title-text">Take a note...</p>
+      </div>
+      <div>
+        <img
+          src="../../../assets/PngItem_792312.png"
+          alt="logo"
+          width="30px"
+          height="30px"
+          style="background: #fff"
+        />
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card
+    *ngIf="clicked"
+    class="mat-elevation-z5 outline take-note-card"
+    fxLayout="column"
+  >
+    <div fxLayout="column">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input type="text" matInput placeholder="Title" [(ngModel)]="title" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Description"
+          [(ngModel)]="description"
+        />
+      </mat-form-field>
+
+      <div>
+        <app-icons></app-icons>
+        <button type="button" (click)="createNote()">Close</button>
+      </div>
+    </div>
+  </mat-card>
+</div>

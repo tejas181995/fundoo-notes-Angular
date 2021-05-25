@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  baseurl: "http://fundoonotes.incubation.bridgelabz.com/api/",
+  baseurl: 'http://fundoonotes.incubation.bridgelabz.com/api/',
   production: false
 };
 
