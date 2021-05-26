@@ -32,8 +32,18 @@ export class UserService {
         'Accept': 'application/json'
         
       })
-     
     }
     return this.http.Post('notes/addNotes', data, options);
   }
+    updateNotes(note: any, id: any) {
+     let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+        
+      })
+     }
+     return this.http.Post('notes/updateNotes', note, options)
+    }
 }

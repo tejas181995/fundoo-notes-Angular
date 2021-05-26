@@ -7,11 +7,11 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./note.component.scss']
 })
 export class NoteComponent implements OnInit {
-  public title!: string;
-  public description!: string;
+  public title: any;
+  public description: any;
 
   @Input()
-  clicked!: boolean;
+  clicked: any;
   @Output() sendEventToGetAllNotes = new EventEmitter<string>();
 
   @ViewChild('createCard')
