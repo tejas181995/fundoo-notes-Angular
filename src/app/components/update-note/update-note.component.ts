@@ -13,8 +13,8 @@ export class UpdateNoteComponent implements OnInit {
   title: any;
   description: any;
 
-  @ViewChild('autosize')
-  autosize!: CdkTextareaAutosize;
+ 
+  
 
   constructor(private dialogRef: MatDialogRef<UpdateNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public card: any,

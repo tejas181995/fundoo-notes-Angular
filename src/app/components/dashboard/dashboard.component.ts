@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +19,9 @@ export class DashboardComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
+    private userservice: UserService,
+    private router: Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -29,6 +33,16 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+  logout() {
+    let id = localStorage.getItem('id');
+    this.userservice.logout(id).subscribe((res) => {
+      console.log(res);
+      localStorage.removeItem('id')
+      this.router.navigate(['login'])
+    }, (error) => {
+      console.log(error)
+    })
   }
 
 

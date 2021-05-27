@@ -6,16 +6,16 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class UserService {
-  
+
   constructor(private http: HttpService) { }
 
-  registerService(data: any){
+  registerService(data: any) {
     return this.http.Post('user/userSignUp', data, "");
   }
-  loginService(data: any){
+  loginService(data: any) {
     return this.http.Post('user/login', data, "")
   }
-  getAllNotes(id: any){
+  getAllNotes(id: any) {
     let options = {
       headers: new HttpHeaders({
         'Authorization': id,
@@ -24,26 +24,37 @@ export class UserService {
     }
     return this.http.Get('notes/getNotesList', options)
   }
-  createNote(data: any, id: any){
+  createNote(data: any, id: any) {
     let options = {
       headers: new HttpHeaders({
         'Authorization': id,
         'Content-type': 'application/json',
         'Accept': 'application/json'
-        
+
       })
     }
     return this.http.Post('notes/addNotes', data, options);
   }
-    updateNotes(note: any, id: any) {
-     let options = {
+  updateNotes(note: any, id: any) {
+    let options = {
       headers: new HttpHeaders({
         'Authorization': id,
         'Content-type': 'application/json',
         'Accept': 'application/json'
-        
+
       })
-     }
-     return this.http.Post('notes/updateNotes', note, options)
     }
+    return this.http.Post('notes/updateNotes', note, options)
+  }
+  logout(id: any) {
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+
+      })
+    }
+    return this.http.Post('user/logout', '', options);
+  }
 }
