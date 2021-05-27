@@ -1,47 +1,29 @@
-<div
-  class="card-icons"
-  fxLayout="row"
-  fxLayoutAlign="space-between center"
-  fxLayoutGap="20px grid"
->
-  <div fxFlex="25%">
+<div class="card-icons" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px grid">
+  <div fxFlex="25%" >
     <!-- remainder  -->
-    <img
-      src="../../../assets/alert.svg"
-      alt="remainder"
-      width="25px"
-      height="25px"
-    />
+    <img src="../../../assets/alert.svg" alt="remainder" width="25px" height="25px" matTooltip="Remainder"/>
   </div>
 
-  <div fxFlex="25%">
-    <!-- collaborator -->
-    <img
-      src="../../../assets/collaborator.svg"
-      alt="collab"
-      width="25px"
-      height="25px"
-    />
+  <div fxFlex="25%" >
+    <!-- trash -->
+    <img src="../../../assets/trash.svg" alt="trash" width="25px" height="25px" matTooltip="move to Trash"/>
   </div>
 
-  <div fxFlex="25%">
+  <div fxFlex="25%" >
     <!-- color pallete -->
-    <img
-      src="../../../assets/color_lens.svg"
-      alt="color"
-      width="25px"
-      height="25px"
-    />
+    <img src="../../../assets/color_lens.svg" alt="color" width="25px" height="25px" [matMenuTriggerFor]="colorMenu" matTooltip="Change Color" #color />
+    <mat-menu #colorMenu="matMenu" yPosition="above" xPosition="after" [overlapTrigger]="false">
+      <div *ngFor="let arrayOfColors of colorPalette" fxLayout="row" fxLayoutAlign="space-between center">
+        <div *ngFor="let backcolor of arrayOfColors">
+          <div [ngStyle]="{ 'background-color': backcolor.color }" class="circle" (click)="changeColor(color, backcolor.color)" ></div>
+        </div>
+      </div>
+    </mat-menu>
   </div>
 
-  <div fxFlex="25%">
+  <div fxFlex="25%" >
     <!-- Archive -->
-    <img
-      src="../../../assets/archive.svg"
-      alt="archive"
-      width="25px"
-      height="25px"
-    />
+    <img src="../../../assets/archive.svg" alt="archive" width="25px" height="25px" matTooltip="Archive"/>
   </div>
 
   <div>

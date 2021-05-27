@@ -30,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { UpdateNoteComponent } from './components/update-note/update-note.compon
     MatCardModule,
     MatDialogModule,
     ClickOutsideModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
