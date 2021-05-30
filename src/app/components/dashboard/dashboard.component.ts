@@ -44,6 +44,15 @@ export class DashboardComponent implements OnInit {
       console.log(error)
     })
   }
+  trash(){
+    this.router.navigate(['dashboard/trash'])
+  }
+  archive() {
+    this.router.navigate(['dashboard/archives'])
+  }
+  newNote(){
+    this.router.navigate(['dashboard/newnote'])
+  }
 
 
 }

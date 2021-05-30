@@ -6,16 +6,16 @@
 
   <div fxFlex="25%" >
     <!-- trash -->
-    <img src="../../../assets/trash.svg" alt="trash" width="25px" height="25px" matTooltip="move to Trash"/>
+    <img src="../../../assets/trash.svg" alt="trash" width="25px" height="25px" matTooltip="move to Trash" (click)="addToTrash()"/>
   </div>
 
   <div fxFlex="25%" >
     <!-- color pallete -->
-    <img src="../../../assets/color_lens.svg" alt="color" width="25px" height="25px" [matMenuTriggerFor]="colorMenu" matTooltip="Change Color" #color />
+    <img src="../../../assets/color_lens.svg" alt="color" width="25px" height="25px" [matMenuTriggerFor]="colorMenu" matTooltip="Change Color" #color  />
     <mat-menu #colorMenu="matMenu" yPosition="above" xPosition="after" [overlapTrigger]="false">
       <div *ngFor="let arrayOfColors of colorPalette" fxLayout="row" fxLayoutAlign="space-between center">
         <div *ngFor="let backcolor of arrayOfColors">
-          <div [ngStyle]="{ 'background-color': backcolor.color }" class="circle" (click)="changeColor(color, backcolor.color)" ></div>
+          <div [ngStyle]="{ 'background-color': backcolor.color }" class="circle" (click)="changeColor(backcolor.color)" ></div>
         </div>
       </div>
     </mat-menu>
@@ -23,7 +23,7 @@
 
   <div fxFlex="25%" >
     <!-- Archive -->
-    <img src="../../../assets/archive.svg" alt="archive" width="25px" height="25px" matTooltip="Archive"/>
+    <img src="../../../assets/archive.svg" alt="archive" width="25px" height="25px" matTooltip="Archive" (click)="archiveNote()"/>
   </div>
 
   <div>

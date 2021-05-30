@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class UserService {
 
@@ -24,6 +24,15 @@ export class UserService {
     }
     return this.http.Get('notes/getNotesList', options)
   }
+  changeColor(id: any, data: any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-type': 'application/json'
+      })
+    }
+    return this.http.Post('notes/changesColorNotes',data, options)
+  }
   createNote(data: any, id: any) {
     let options = {
       headers: new HttpHeaders({
@@ -35,7 +44,28 @@ export class UserService {
     }
     return this.http.Post('notes/addNotes', data, options);
   }
-  updateNotes(note: any, id: any) {
+  moveToArchive(data: any, id: any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      })
+    }
+    return this.http.Post('notes/archiveNotes', data, options);
+  }
+  moveToTrash(note: any, id: any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        
+      })
+    }
+    return this.http.Post('notes/trashNotes', note, options)
+  }
+  updateNotes(data: any, id: any) {
     let options = {
       headers: new HttpHeaders({
         'Authorization': id,
@@ -44,8 +74,9 @@ export class UserService {
 
       })
     }
-    return this.http.Post('notes/updateNotes', note, options)
+    return this.http.Post('notes/updateNotes', data, options)
   }
+
   logout(id: any) {
     let options = {
       headers: new HttpHeaders({
@@ -57,4 +88,23 @@ export class UserService {
     }
     return this.http.Post('user/logout', '', options);
   }
+  getArchive(id: any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-type': 'application/json'
+      })
+    }
+    return this.http.Get('notes/getArchiveNotesList', options)
+  }
+  getTrash(id: any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.Get('notes/getTrashNotesList', options);
+  }
+  
 }

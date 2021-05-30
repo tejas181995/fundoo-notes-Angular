@@ -21,7 +21,7 @@ export class GetAllNotesComponent implements OnInit {
     let id = localStorage.getItem('id')
     this.userservice.getAllNotes(id,).subscribe((resp: any) => {
       console.log(resp.data.data);
-      this.AllNotes = resp.data.data;
+      this.AllNotes = resp.data.data.filter(this.noteFilteration);
     }, (error: any) => {
       console.log(error);
     });
@@ -40,6 +40,9 @@ export class GetAllNotesComponent implements OnInit {
     else {
       console.log("update failure");
     }
+  }
+  private noteFilteration(note: any) {
+    return note.isArchived == false && note.isDeleted == false;
   }
 
 }

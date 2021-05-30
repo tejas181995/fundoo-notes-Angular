@@ -33,9 +33,9 @@ export class UpdateNoteComponent implements OnInit {
     let id = localStorage.getItem('id')
     console.log(id)
     let note = {
-      noteId: this.card.note.id,
-      title: this.title,
-      description: this.description
+      noteId: [this.card.note.id],
+      title: [this.title],
+      description: [this.description]
     };
     console.log('Updating the note', note);
     this.userservice.updateNotes(note, id).subscribe((resp: any) => {

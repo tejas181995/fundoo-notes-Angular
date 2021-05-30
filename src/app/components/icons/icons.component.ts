@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-icons',
@@ -25,24 +26,67 @@ export class IconsComponent implements OnInit {
     ]
   ]
 
-  @Input() noteCard: any;
+  @Input()
+  noteCard: any;
   @Output() refreshRequest = new EventEmitter<any>();
-  constructor() { }
+  constructor(private userservice: UserService) { }
 
   ngOnInit(): void {
   }
 
   archiveNote() {
-    console.log(this.noteCard.id);
+    let data = {
+      noteIdList: [this.noteCard.id],
+      isArchived: true
+    };
+    console.log(data);
+    
+    let id = localStorage.getItem('id')
+    this.userservice.moveToArchive(data, id).subscribe((res) => {
+      console.log(res);
+      this.refreshRequest.emit({ refresh: true, message: 'archived' });
+    }, (error) => {
+      console.log(error)
+    })
+  }
+  addToTrash() {
+    let token = localStorage.getItem('id')
+    console.log(token)
+    let data = {
+      noteIdList: [this.noteCard.id],
+      isDeleted: true
+    }
+    console.log(data)
+    this.userservice.moveToTrash(data, token).subscribe((res) => {
+      console.log(res)
+      this.refreshRequest.emit({ refresh: true, message: 'deleted' })
+    }, (error) => {
+      console.log(error)
+    })
   }
 
-  changeColor(event: HTMLElement, color: string){
-    console.log(event.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement)
-    let ele = event.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement;
-    if(ele != null)
-      ele.setAttribute("style", "background: "+ color)
-    }
-    
-  
-
+  // changeColor(event: HTMLElement, color: string) {
+  //   let ele = event.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement;
+  //   if (ele != null) {
+  //     ele.setAttribute("style", "background: " + color)
+  //   }
+  changeColor(color: any) {
+    this.noteCard.color = color
+    let id = localStorage.getItem('id')
+    let data ={
+      noteIdList: [this.noteCard.id],
+      color: color,
+     }
+     console.log(data);
+     
+     this.userservice.changeColor(id, data).subscribe((res)=> {
+       console.log(res)
+       this.refreshRequest.emit({ refresh: true, message: 'colored'})
+     },(error)=> {
+       console.log(error)
+     })
+  }
 }
+
+
+

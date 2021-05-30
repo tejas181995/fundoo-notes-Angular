@@ -1,1 +1,4 @@
-<p>get-archives works!</p>
+<app-display
+  [notesArray]="AllNotes"
+  (updateSignal)="refreshAfterUpdation($event)"
+></app-display>

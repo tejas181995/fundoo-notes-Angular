@@ -1,1 +1,5 @@
-<p>get-trash works!</p>
+
+<app-display
+[notesArray]="AllNotes"
+(updateSignal)="refreshAfterUpdation($event)"
+></app-display>
