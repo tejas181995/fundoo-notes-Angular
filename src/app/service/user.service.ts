@@ -106,5 +106,25 @@ export class UserService {
     }
     return this.http.Get('notes/getTrashNotesList', options);
   }
+  restoreTrashNotes(data: any, id: any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      })
+    }
+    return this.http.Post('notes/trashNotes', data, options);
+  }
+  restoreArchiveNotes(data: any, id: any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      })
+    }
+    return this.http.Post('notes/archiveNotes', data, options);
+  }
   
 }

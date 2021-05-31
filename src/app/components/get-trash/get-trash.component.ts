@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -8,6 +8,14 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class GetTrashComponent implements OnInit {
   AllNotes: any[] = [];
+  public isTrash=true;
+
+  @Input()
+  notesArray: any[] = [];
+
+  @Input()
+  noteCard: any;
+  @Output() refreshRequest = new EventEmitter<any>();
   constructor(private userservice: UserService) { }
 
   ngOnInit(): void {
@@ -35,5 +43,6 @@ export class GetTrashComponent implements OnInit {
       console.log("update failure");
     }
   }
+  
   
 }

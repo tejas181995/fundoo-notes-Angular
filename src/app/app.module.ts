@@ -31,6 +31,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MatMenuModule } from '@angular/material/menu';
     GetAllNotesComponent,
     GetTrashComponent,
     IconsComponent,
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatExpansionModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

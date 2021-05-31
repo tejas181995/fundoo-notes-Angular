@@ -8,6 +8,12 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class IconsComponent implements OnInit {
 
+  @Input()
+  isArchive: any
+
+  @Input() 
+  isTrash: any
+
   public colorPalette: any[] = [
     [
       { color: '#fff' },
@@ -64,12 +70,6 @@ export class IconsComponent implements OnInit {
       console.log(error)
     })
   }
-
-  // changeColor(event: HTMLElement, color: string) {
-  //   let ele = event.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement;
-  //   if (ele != null) {
-  //     ele.setAttribute("style", "background: " + color)
-  //   }
   changeColor(color: any) {
     this.noteCard.color = color
     let id = localStorage.getItem('id')
@@ -86,7 +86,39 @@ export class IconsComponent implements OnInit {
        console.log(error)
      })
   }
+  restoreTrash(){
+    let data = {
+      noteIdList: [this.noteCard.id],
+      isDeleted: false
+    };
+    console.log(data);
+    
+    let id = localStorage.getItem('id')
+    this.userservice.restoreTrashNotes(data, id).subscribe((res) => {
+      console.log(res);
+      this.refreshRequest.emit({ refresh: true, message: 'archived' });
+    }, (error) => {
+      console.log(error)
+    })
+  }
+  restoreArchive(){
+    let data = {
+      noteIdList: [this.noteCard.id],
+      isArchived: false,
+    };
+    console.log(data);
+    
+    let id = localStorage.getItem('id')
+    this.userservice.restoreArchiveNotes(data, id).subscribe((res) => {
+      console.log(res);
+      this.refreshRequest.emit({ refresh: true, message: 'archived' });
+    }, (error) => {
+      console.log(error)
+    })
+  }
+  
 }
+
 
 
 

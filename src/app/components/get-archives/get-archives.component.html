@@ -1,4 +1,18 @@
+<!-- <div>
+    <div *ngIf="check(); else elseStatement">
+        <div>
+            <app-display-archive [notesArray]="AllNotes" (updateSignal)="refreshAfterUpdation($event)">
+            </app-display-archive>
+        </div>
+    </div>
+    <ng-template #elseStatement>
+        <div>
+            <h1 class="lable">Archive is Empty</h1>
+        </div>
+    </ng-template>
+</div> -->
 <app-display
   [notesArray]="AllNotes"
   (updateSignal)="refreshAfterUpdation($event)"
+  [isArchive]="isArchive"
 ></app-display>

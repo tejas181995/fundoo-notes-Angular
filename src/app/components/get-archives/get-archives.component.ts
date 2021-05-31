@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -8,9 +8,15 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class GetArchivesComponent implements OnInit {
   AllNotes: any[] = [];
+  isArchive=true;
+
+  @Input()
+  noteCard: any;
+  @Output() refreshRequest = new EventEmitter<any>();
   constructor(private userservice: UserService) { }
 
   ngOnInit(): void {
+   
     this.getArchives();
   }
   getArchives(){
@@ -34,4 +40,10 @@ export class GetArchivesComponent implements OnInit {
       console.log("update failure");
     }
   }
+  check() : any {
+    if(this.AllNotes != null)
+      return true;
+    
+  }
+ 
 }
