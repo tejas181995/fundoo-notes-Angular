@@ -35,7 +35,7 @@
   <div fxFlex="25%" class="point" *ngIf="isTrash">
 
     <img src="../../../assets/delete_forever_black_24dp.svg" alt="archive" width="25px" height="25px"
-      matTooltip="Detele Forever" (click)="archiveNote()" />
+      matTooltip="Detele Forever" (click)="deleteNote()" />
   </div>
 
   <div fxFlex="25%" class="point" *ngIf="!isArchive && !isTrash">

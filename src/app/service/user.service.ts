@@ -126,5 +126,15 @@ export class UserService {
     }
     return this.http.Post('notes/archiveNotes', data, options);
   }
+  deleteForever(data: any, id: any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      })
+    }
+    return this.http.Post('notes/deleteForeverNotes', data, options);
+  }
   
 }

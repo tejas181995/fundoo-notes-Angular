@@ -116,6 +116,21 @@ export class IconsComponent implements OnInit {
       console.log(error)
     })
   }
+  deleteNote(){
+    let data = {
+      noteIdList: [this.noteCard.id],
+      isDeleted: false,
+    };
+    console.log(data);
+    
+    let id = localStorage.getItem('id')
+    this.userservice.deleteForever(data, id).subscribe((res) => {
+      console.log(res);
+      this.refreshRequest.emit({ refresh: true, message: 'archived' });
+    }, (error) => {
+      console.log(error)
+    })
+  }
   
 }
 
