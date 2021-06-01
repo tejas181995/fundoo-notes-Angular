@@ -1,4 +1,15 @@
+<div fxFlex="10%" class="point" *ngIf="isTrash">
+
+  <img src="../../../assets/restore_from_trash_black_24dp.svg" alt="archive" width="25px" height="25px"
+    matTooltip="Untrash" (click)="restoreTrash()" />
+</div>
+<div fxFlex="10%" class="point" *ngIf="isTrash">
+
+  <img src="../../../assets/delete_forever_black_24dp.svg" alt="archive" width="25px" height="25px"
+    matTooltip="Detele Forever" (click)="deleteNote()" />
+</div>
 <div class="card-icons" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px grid">
+  
   <div fxFlex="25%" class="point" *ngIf="!isTrash">
 
     <img src="../../../assets/alert.svg" alt="remainder" width="25px" height="25px" matTooltip="Remainder" />
@@ -27,16 +38,7 @@
       </div>
     </mat-menu>
   </div>
-  <div fxFlex="25%" class="point" *ngIf="isTrash">
-
-    <img src="../../../assets/restore_from_trash_black_24dp.svg" alt="archive" width="25px" height="25px"
-      matTooltip="Untrash" (click)="restoreTrash()" />
-  </div>
-  <div fxFlex="25%" class="point" *ngIf="isTrash">
-
-    <img src="../../../assets/delete_forever_black_24dp.svg" alt="archive" width="25px" height="25px"
-      matTooltip="Detele Forever" (click)="deleteNote()" />
-  </div>
+  
 
   <div fxFlex="25%" class="point" *ngIf="!isArchive && !isTrash">
 

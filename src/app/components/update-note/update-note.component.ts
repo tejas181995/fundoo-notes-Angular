@@ -2,6 +2,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Component, Inject, NgZone, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserService } from 'src/app/service/user.service';
+import { NoteComponent } from '../note/note.component';
 
 @Component({
   selector: 'app-update-note',
@@ -10,11 +11,8 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UpdateNoteComponent implements OnInit {
 
-  title: any;
+  title: any
   description: any;
-
- 
-  
 
   constructor(private dialogRef: MatDialogRef<UpdateNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public card: any,
@@ -23,6 +21,8 @@ export class UpdateNoteComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.title = this.card.note.title;
+    this.description=this.card.note.description
   }
 
   onClose() {
