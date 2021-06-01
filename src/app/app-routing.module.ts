@@ -9,6 +9,7 @@ import { GetArchivesComponent } from './components/get-archives/get-archives.com
 import { GetTrashComponent } from './components/get-trash/get-trash.component';
 import { LoginComponent } from './components/login/login.component';
 import { NoteComponent } from './components/note/note.component';
+import { ResetComponent } from './components/reset/reset.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'forgotpassword',
     component: ForgotComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'resetpassword',
+    component: ResetComponent
   },
   {
     path: 'dashboard',

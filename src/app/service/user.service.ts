@@ -141,4 +141,9 @@ export class UserService {
 
     return this.http.Post('/user/reset', data, "");
   }
+  resetPassword(data: any) {
+    console.log("user service called", data);
+
+    return this.http.encodedPost('user/reset-password', data);
+  }
 }

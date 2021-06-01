@@ -17,4 +17,24 @@ export class HttpService {
   Get(url: any, options: any){
     return this.httpClient.get(this.baseUrl + url, options)
   }
+  encode(data: any) {
+    const formBody = [];
+    for (const property in data) {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(data[property]);
+      formBody.push(encodedKey + '=' + encodedValue);
+    }
+    return formBody.join('&');
+  }
+  encodedPost(url: any, data:any) {
+    let id: any = localStorage.getItem('id')
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/x-www-form-urlencoded'
+      })
+    }
+    return this.Post(this.baseUrl + url, this.encode(data), options)
+  }
 }
