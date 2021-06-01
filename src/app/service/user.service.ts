@@ -136,5 +136,9 @@ export class UserService {
     }
     return this.http.Post('notes/deleteForeverNotes', data, options);
   }
-  
+  forgetPassword(data: any) {
+    console.log("user service called");
+
+    return this.http.Post('/user/reset', data, "");
+  }
 }

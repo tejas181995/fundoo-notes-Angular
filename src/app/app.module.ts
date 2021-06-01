@@ -32,6 +32,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthService } from './service/auth.service';
+import { ForgotComponent } from './components/forgot/forgot.component';
+import { ResetComponent } from './components/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { AuthService } from './service/auth.service';
     GetTrashComponent,
     IconsComponent,
     UpdateNoteComponent,
+    ForgotComponent,
+    ResetComponent,
     
   ],
   imports: [

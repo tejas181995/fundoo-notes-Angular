@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './authentication/auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DisplayComponent } from './components/display/display.component';
+import { ForgotComponent } from './components/forgot/forgot.component';
 import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
 import { GetArchivesComponent } from './components/get-archives/get-archives.component';
 import { GetTrashComponent } from './components/get-trash/get-trash.component';
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'signup',
     component:SignUpComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'forgotpassword',
+    component: ForgotComponent,
     canActivate: [AuthGuard]
   },
   {

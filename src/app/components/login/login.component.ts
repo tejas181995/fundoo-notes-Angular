@@ -54,4 +54,7 @@ export class LoginComponent implements OnInit {
   gone(){
     this.styleDisp="hidden"
   }
+  forgot(){
+    this.router.navigateByUrl('/forgotpassword')
+  }
 }
